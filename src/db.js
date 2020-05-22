@@ -7,7 +7,7 @@ function initDatabase() {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 };
-mongoose.connect('mongodb://localhost:27017/db-proyect', options);
+mongoose.connect('mongodb://localhost:27017/database', options);
 
 const { connection } = mongoose;
 
