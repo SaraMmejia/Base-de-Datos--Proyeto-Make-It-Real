@@ -1,10 +1,5 @@
 const { Schema, model, models } = require('mongoose');
 
-//En providerSchema van los elementos de la base de datos que para el provider me voy a traer
-//y allí se incluye la información que voy a permitir ingresar desde el frontEnd a la base de datos.
-// si del front me envían más datos de los aquí especificados auntomáticamente se ignoran y no ingresan.
-
-//Validación del E-mail
 const emailTest = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 const uniqueEmail = {
@@ -38,7 +33,7 @@ const providerSchema = new Schema({
     required: [true, 'Email es un campo requerido'],
     match: [emailTest, 'Correo invalido'],
     validate: [
-      uniqueEmail
+      uniqueEmail,
     ]
   },
   password: {
