@@ -1,7 +1,5 @@
 const Branch = require('../models/branch.model.js');
 
-//Controladores : CRUD
-
 module.exports = {
   all(req, res) {
     Branch

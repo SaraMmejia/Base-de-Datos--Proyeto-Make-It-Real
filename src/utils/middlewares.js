@@ -14,4 +14,3 @@ module.exports = {
     next();
   }
 }
-//Authorization se envía desde el front con A mayúscula
