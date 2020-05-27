@@ -1,4 +1,3 @@
-const Login = require('../models/login.model.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Provider = require('../models/provider.model.js');
@@ -15,7 +14,7 @@ module.exports = {
       if (!user){
         user = await Client.findOne({ clientEmail: req.body.email });
       }
-      
+
       if (!user){
         console.log(user);
         throw Error('El usuario no existe');

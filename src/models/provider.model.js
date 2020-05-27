@@ -14,19 +14,19 @@ const uniqueEmail = {
 const providerSchema = new Schema({
   name: {
     type: String,
-    // required: [true, 'Nombre es un campo requerido']
+    required: [true, 'Nombre es un campo requerido']
   },
   lastname:  {
     type: String,
-    // required: [true, 'Apellido es un campo requerido']
+    required: [true, 'Apellido es un campo requerido']
   },
   company:  {
     type: String,
-    // required: [true, 'Compañía es un campo requerido']
+    required: [true, 'Compañía es un campo requerido']
   },
   nit: {
     type: Number,
-    // required: [true, 'NIT es un campo requerido']
+    required: [true, 'NIT es un campo requerido']
   },
   providerEmail:  {
     type: String,

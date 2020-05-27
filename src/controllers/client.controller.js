@@ -4,11 +4,14 @@ const jwt = require('jsonwebtoken');
 
 
 module.exports = {
-    all(req, res) {
-        Client
-          .find()
-          .then((client) => res.status(200).json(client))
-          .catch((error) => res.status(500).json(error));
+    async all(req, res) {
+      try{
+      const client = await Client.find()
+      res.status(200).json(client);
+      }
+      catch (error) {
+        console.log(error);
+      }
       },
       async create(req, res) {
 
@@ -29,31 +32,44 @@ module.exports = {
           console.log(error);
         }
       },
-      show(req, res){
-        const { id }=req.params;
-        Client
-         .findById(id)
-         .then((client) => res.status(200).json(client))
-         .catch((error) => res.status(400).json(error))
+      async show(req, res){
+
+        try{
+         const { id } = req.params;
+         const client = await Client.findById(id)
+         res.status(200).json(client);
+
+         }
+         catch (error) {
+           console.log(error);
+         }
       },
-      edit(req, res){
+      async edit(req, res){
+
+        try{
         const { id } = req.params;
         const data = req.body;
         const options = {
           new: true,
           useFindAndModify: false
         };
-        Client
-          .findByIdAndUpdate(id, data, options)
-          .then((client) => res.status(200).json(client))
-          .catch((error) => res.status(400).json(error))
-      },
-      destroy(req, res) {
-        const { id } = req.params;
+          const client = await Client.findByIdAndUpdate(id, data, options)
+          res.status(200).json(client);
 
-        Client
-          .findByIdAndDelete(id)
-          .then((client) => res.status(200).json(client))
-          .catch((error) => res.status(400).json(error));
+        }
+        catch (error) {
+          console.log(error);
+        }
+      },
+      async destroy(req, res) {
+
+        try{
+            const { id } = req.params;
+            const client = await Client.findByIdAndDelete(id)
+            res.status(200).json(client);
+        }
+          catch (error) {
+            console.log(error);
+          }
       }
 };

@@ -1,43 +1,65 @@
 const Branch = require('../models/branch.model.js');
 
 module.exports = {
-  all(req, res) {
-    Branch
-      .find()
-      .then((branch) => res.status(200).json(branch))
-      .catch((error) => res.status(500).json(error));
+  async all(req, res) {
+
+      try{
+      const branch = await Branch.find()
+      res.status(200).json(branch);
+      }
+      catch (error) {
+        console.log(error);
+      }
   },
-  create(req, res){
+  async create(req, res){
+
+    try{
     const data = req.body;
-    Branch
-    .create(data)
-    .then((branch) => res.status(200).json(branch))
-    .catch((error) => res.status(400).json(error))
+    const branch = await Branch.create(data)
+    res.status(200).json(branch);
+    }
+    catch (error) {
+      console.log(error);
+    }
   },
-  show(req, res){
-    const { id }=req.params;
-    Branch
-     .findById(id)
-     .then((branch) => res.status(200).json(branch))
-     .catch((error) => res.status(400).json(error))
+  async show(req, res){
+
+    try{
+     const { id } = req.params;
+     const branch = await Branch.findById(id)
+     res.status(200).json(branch);
+
+     }
+     catch (error) {
+       console.log(error);
+     }
   },
-  edit(req, res){
+  async edit(req, res){
+
+    try{
     const { id } = req.params;
     const data = req.body;
     const options = {
       new: true,
       useFindAndModify: false
     };
-    Branch
-      .findByIdAndUpdate(id, data, options)
-      .then((branch) => res.status(200).json(branch))
-      .catch((error) => res.status(400).json(error))
+      const branch = await Branch.findByIdAndUpdate(id, data, options)
+      res.status(200).json(branch);
+
+    }
+    catch (error) {
+      console.log(error);
+    }
   },
-  destroy(req, res){
-    const { id } = req.params;
-    Branch
-      .findByIdAndDelete(id)
-      .then((branch) => res.status(200).json(branch))
-      .catch((error) => res.status(400).json(error));
+  async destroy(req, res) {
+
+    try{
+        const { id } = req.params;
+        const branch = await Branch.findByIdAndDelete(id)
+        res.status(200).json(branch);
+    }
+      catch (error) {
+        console.log(error);
+      }
   }
 }
