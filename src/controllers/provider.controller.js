@@ -14,7 +14,7 @@ module.exports = {
     try {
       const data = req.body;
       const password = await bcrypt.hash(data.password, 8);
-      const provider = await Provider.create(data);
+      const provider = await Provider.create({providerEmail: data.providerEmail, password});
 
       const token = jwt.sign(
         { id: provider._id },
