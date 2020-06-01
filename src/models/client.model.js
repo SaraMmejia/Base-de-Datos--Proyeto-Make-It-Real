@@ -20,6 +20,10 @@ const clientSchema = new Schema({
     type: String,
     // required: [true, 'Apellido es un campo requerido']
   },
+  lastname:  {
+    type: String,
+    required: [true, 'Apellido es un campo requerido']
+  },
   clientEmail:  {
     type: String,
     required: [true, 'Email es un campo requerido'],
