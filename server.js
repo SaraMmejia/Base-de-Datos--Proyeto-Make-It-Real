@@ -13,6 +13,9 @@ const branchRouter = require('./src/routes/branch.js');
 const loginRouter = require ('./src/routes/login.js');
 const { auth } = require ('./src/utils/middlewares.js');
 
+const port =  process.env.PORT;
+
+
 initDatabase();
 const app = express();
 app.use(cors());
@@ -24,4 +27,4 @@ app.use('/providers', providerRouter);
 app.use('/providers/:id/branch', branchRouter);
 
 
-app.listen(8080, () => console.log(`App running on http://localhost:8080`));
+app.listen(port, () => console.log(`App running on http://localhost:${port}`));

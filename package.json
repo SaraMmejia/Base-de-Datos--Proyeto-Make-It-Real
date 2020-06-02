@@ -22,13 +22,12 @@
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.9.15"
 	},
- "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SaraMmejia/Base-de-Datos--Proyeto-Make-It-Real.git"
-  },
-  "bugs": {
-    "url": "https://github.com/SaraMmejia/Base-de-Datos--Proyeto-Make-It-Real/issues"
-  },
-  "homepage": "https://github.com/SaraMmejia/Base-de-Datos--Proyeto-Make-It-Real#readme",
-  "description": ""
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SaraMmejia/Base-de-Datos--Proyeto-Make-It-Real.git"
+	},
+	"bugs": {
+		"url": "https://github.com/SaraMmejia/Base-de-Datos--Proyeto-Make-It-Real/issues"
+	},
+	"homepage": "https://github.com/SaraMmejia/Base-de-Datos--Proyeto-Make-It-Real#readme"
 }

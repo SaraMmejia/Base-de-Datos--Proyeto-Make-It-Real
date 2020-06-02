@@ -3,12 +3,13 @@ const mongoose = require('mongoose');
 
 
 function initDatabase() {
+  const mongoURI = process.env.SERVER_URL;
   const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 };
   
-mongoose.connect('mongodb://localhost:27017/database', options);
+mongoose.connect(mongoURI, options);
 
 const { connection } = mongoose;
 
