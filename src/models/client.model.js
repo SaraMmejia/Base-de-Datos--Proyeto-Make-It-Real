@@ -15,7 +15,7 @@ const clientSchema = new Schema(
 	{
 		name: {
 			type: String,
-			// required: [true, 'Nombre es un campo requerido']
+			required: [true, "Nombre es un campo requerido"],
 		},
 
 		lastname: {

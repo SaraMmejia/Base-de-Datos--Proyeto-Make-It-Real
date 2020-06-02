@@ -1,15 +1,11 @@
-// const router = require("express").Router();
-// const productListController = require("../controllers/productList.controller.js");
-// const { auth } = require("../utils/middlewares.js");
+const router = require("express").Router();
+const productController = require("../controllers/product.controller.js");
+const { auth } = require("../utils/middlewares.js");
 
-// router.route("/all").get(auth, productListController.list);
-// router.route("/create").post(productListController.create);
-// router.route("/show/:id").get(productListController.show);
-// router.route("/edit/:id").put(productListController.edit);
-// router.route("/destroy/:id").delete(productListController.destroy);
+router.route("/all").get(productController.all);
+router.route("/create").post(productController.create);
+router.route("/show/:id").get(productController.show);
+router.route("/edit/:id").put(productController.edit);
+router.route("/destroy/:id").delete(productController.destroy);
 
-// const loginController = require("../controllers/login.controller.js");
-
-// router.route("/product").post(auth, productController.list);
-
-// module.exports = router;
+module.exports = router;

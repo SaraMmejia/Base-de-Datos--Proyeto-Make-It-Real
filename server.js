@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/", loginRouter);
-// app.use('/products', productListRouter);
+app.use("/products", productListRouter);
 app.use("/clients", clientRouter);
 app.use("/providers", providerRouter);
 app.use("/providers/:id/branch", branchRouter);
