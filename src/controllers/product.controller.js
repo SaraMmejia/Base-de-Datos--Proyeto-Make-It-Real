@@ -1,10 +1,10 @@
-const Branch = require('../models/branch.model.js');
+const Product = require('../models/product.model');
 
 module.exports = {
   async all(req, res) {
     try {
-      const branch = await Branch.find();
-      res.status(200).json(branch);
+      const product = await Product.find();
+      res.status(200).json(product);
     } catch (error) {
       console.log(error);
     }
@@ -12,8 +12,9 @@ module.exports = {
   async create(req, res) {
     try {
       const data = req.body;
-      const branch = await Branch.create(data);
-      res.status(200).json(branch);
+      console.log(req.body);
+      const product = await Product.create(data);
+      res.status(200).json(product);
     } catch (error) {
       console.log(error);
     }
@@ -21,8 +22,8 @@ module.exports = {
   async show(req, res) {
     try {
       const { id } = req.params;
-      const branch = await Branch.findById(id);
-      res.status(200).json(branch);
+      const product = await Product.findById(id);
+      res.status(400).json(product);
     } catch (error) {
       console.log(error);
     }
@@ -35,8 +36,8 @@ module.exports = {
         new: true,
         useFindAndModify: false,
       };
-      const branch = await Branch.findByIdAndUpdate(id, data, options);
-      res.status(200).json(branch);
+      const product = await Product.findByIdAndUpdate(id, data, options);
+      res.status(400).json(product);
     } catch (error) {
       console.log(error);
     }
@@ -44,8 +45,8 @@ module.exports = {
   async destroy(req, res) {
     try {
       const { id } = req.params;
-      const branch = await Branch.findByIdAndDelete(id);
-      res.status(200).json(branch);
+      const product = await Product.findByIdAndDelete(id);
+      res.status(400).json(product);
     } catch (error) {
       console.log(error);
     }
