@@ -8,7 +8,7 @@ const productSchema = new Schema(
 		},
 		picture: {
 			type: String,
-			required: [false, "Foto es un campo requerido"],
+			required: [true, "Foto es un campo requerido"],
 		},
 		price: {
 			type: Number,

@@ -9,6 +9,7 @@ const branchRouter = require('./src/routes/branch.js');
 const loginRouter = require('./src/routes/login.js');
 const productRouter = require('./src/routes/product.js');
 const { auth } = require('./src/utils/middlewares.js');
+const { formData } = require('./src/utils/middlewareBusboy.js');
 
 const port = process.env.PORT;
 
