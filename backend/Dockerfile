@@ -5,7 +5,7 @@ WORKDIR /usr/src/app/backend
 
 COPY . .
 
-RUN npm install 
+RUN npm install --production
 
 EXPOSE 8080
 
