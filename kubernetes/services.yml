@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cheaperservice
+  name: cheaperservices
 spec:
   selector:
     app: cheaperlabel
@@ -10,8 +10,8 @@ spec:
     - name: cheaperbackendport
       port: 8080
       targetPort: 8080
-    - name: cheaperfrontendpot
+    - name: cheaperfrontendport
       port: 3000
       targetPort: 3000
   externalIPs:
-    - 192.168.99.100
+    - 10.104.68.1

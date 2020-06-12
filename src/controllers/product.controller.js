@@ -11,9 +11,9 @@ module.exports = {
   },
   async create(req, res) {
     try {
-      const data = req.body;
+      const {file, ...data} = req.body;
       console.log(req.body);
-      const product = await Product.create(data);
+      const product = await Product.create({...data, picture: file.secure_url});
       res.status(200).json(product);
     } catch (error) {
       console.log(error);
@@ -23,7 +23,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const product = await Product.findById(id);
-      res.status(400).json(product);
+      res.status(200).json(product);
     } catch (error) {
       console.log(error);
     }
