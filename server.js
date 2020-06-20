@@ -8,8 +8,8 @@ const providerRouter = require('./src/routes/provider.js');
 const branchRouter = require('./src/routes/branch.js');
 const loginRouter = require('./src/routes/login.js');
 const productRouter = require('./src/routes/product.js');
-const { auth } = require('./src/utils/middlewares.js');
-const { formData } = require('./src/utils/middlewareBusboy.js');
+const searchRouter = require('./src/routes/search.js');
+
 
 const port = process.env.PORT;
 
@@ -17,9 +17,16 @@ initDatabase();
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(require("body-parser").json());
+
+
+
+
 
 app.use('/', loginRouter);
 app.use('/clients', clientRouter);
+app.use('/clients/search', searchRouter);
+app.use('/providers/search', searchRouter);
 app.use('/providers', providerRouter);
 app.use('/products', productRouter);
 app.use('/providers/:id/branch', branchRouter);
