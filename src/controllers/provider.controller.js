@@ -17,6 +17,10 @@ module.exports = {
       const password = await bcrypt.hash(data.password, 8);
       const provider = await Provider.create({
         providerEmail: data.providerEmail,
+        name: data.name,
+        lastname: data.lastname,
+        company: data.company,
+        nit: data.nit,
         password,
       });
       const token = jwt.sign({ id: provider._id }, process.env.SECRET, {
