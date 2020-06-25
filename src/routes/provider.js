@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const providerController = require('../controllers/provider.controller.js');
-const productController = require('../controllers/product.controller.js');
 
 router.route('/all').get(providerController.all);
 router.route('/create').post(providerController.create);

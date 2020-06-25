@@ -21,7 +21,7 @@ module.exports = {
         lastname: data.lastname,
         password,
       });
-      const token = jwt.sigin({ id: client._id }, process.env.SECRET, {
+      const token = jwt.sign({ id: client._id }, process.env.SECRET, {
         expiresIn: 60 * 60 * 24 * 365,
       });
       res.status(200).json({ token });

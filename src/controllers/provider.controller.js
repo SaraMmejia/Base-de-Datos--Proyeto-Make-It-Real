@@ -8,7 +8,7 @@ module.exports = {
       const provider = await Provider.find();
       res.status(200).json(provider);
     } catch (error) {
-      console.log(error);
+      res.status(500).json({ message: error.message });
     }
   },
   async create(req, res) {
@@ -28,7 +28,7 @@ module.exports = {
       });
       res.status(200).json({ token });
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
   async show(req, res) {
@@ -37,7 +37,7 @@ module.exports = {
       const provider = await Provider.findById(id);
       res.status(200).json(provider);
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
   async edit(req, res) {
@@ -51,7 +51,7 @@ module.exports = {
       const provider = await Provider.findByIdAndUpdate(id, data, options);
       res.status(200).json(provider);
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
   async destroy(req, res) {
@@ -60,7 +60,7 @@ module.exports = {
       const provider = await Provider.findByIdAndDelete(id);
       res.status(200).json(provider);
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
 };
