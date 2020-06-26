@@ -1,5 +1,5 @@
 const Provider = require('../models/provider.model.js');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 module.exports = {

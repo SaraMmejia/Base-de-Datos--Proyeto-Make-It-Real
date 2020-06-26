@@ -14,8 +14,7 @@ initDatabase();
 
 app.use(cors());
 app.use(express.json());
-
-
+app.use(express.static('public'));
 
 app.use('/', loginRouter);
 app.use('/clients', clientRouter);
@@ -23,4 +22,4 @@ app.use('/providers', providerRouter);
 app.use('/products', productRouter);
 app.use('/providers/:id/branch', branchRouter);
 
-module.exports = app
+module.exports = app;

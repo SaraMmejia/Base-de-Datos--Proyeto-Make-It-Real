@@ -36,6 +36,23 @@ describe('Product', () => {
     done();
   });
 
+  // it('should create a new product', async (done) => {
+  //   const res = await req(app)
+  //     .post('/products/create')
+  //     .set('Authorization', token)
+  //     .field('name', 'Huevos')
+  //     .field('price', 10000)
+  //     .field('category', 'lacteos')
+  //     .field('description', 'Huevos triple A')
+  //     .attach('file', 'public/chocolate.png');
+
+  //   console.log('res', res);
+
+  //   expect(res.statusCode).toBe(200);
+  //   expect(res.body).toHaveProperty('title', 'New Title');
+  //   done();
+  // });
+
   it('should show a product by id ', async (done) => {
     const product = {
       name: 'huevos',
