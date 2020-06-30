@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const branchController = require('../controllers/branch.controller.js');
-const { auth } = require ('../utils/middlewares.js');
+const { auth } = require('../utils/middlewares.js');
 
 
 router.route('/all').get(branchController.all);
