@@ -1,6 +1,7 @@
 const Client = require('../models/client.model.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { transporter, welcome, verify } = require('../utils/mail')
 
 module.exports = {
   async all(req, res) {
@@ -21,9 +22,23 @@ module.exports = {
         lastname: data.lastname,
         password,
       });
+
+      verify(transporter);
+
       const token = jwt.sign({ id: client._id }, process.env.SECRET, {
         expiresIn: 60 * 60 * 24 * 365,
       });
+
+      const mail = {
+        from: '"Cheaper Team" <cheapercolombia@aol.com>',
+        to: client.clientEmail,
+        subject: 'Bienvenido!',
+        html: welcome(client.name),
+      }
+      await transporter.sendMail(mail, (err) => {
+        console.log(err);
+      })
+
       res.status(200).json({ token });
     } catch (error) {
       console.log(error);
