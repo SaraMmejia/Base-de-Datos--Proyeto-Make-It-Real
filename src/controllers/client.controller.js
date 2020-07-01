@@ -23,8 +23,6 @@ module.exports = {
         password,
       });
 
-      verify(transporter);
-
       const token = jwt.sign({ id: client._id }, process.env.SECRET, {
         expiresIn: 60 * 60 * 24 * 365,
       });
