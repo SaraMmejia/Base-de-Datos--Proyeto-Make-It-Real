@@ -7,7 +7,7 @@ function initDatabase() {
     useUnifiedTopology: true,
   };
 
-  mongoose.connect('mongodb://mongo:27017/database', options);
+  mongoose.connect(process.env.SERVER_URL, options);
 
   const { connection } = mongoose;
 
