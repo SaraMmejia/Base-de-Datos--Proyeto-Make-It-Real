@@ -15,11 +15,11 @@ const clientSchema = new Schema(
   {
     name: {
       type: String,
-      // required: [true, 'Nombre es un campo requerido']
+      required: [true, 'Nombre es un campo requerido'],
     },
     lastname: {
       type: String,
-      // required: [true, 'Apellido es un campo requerido']
+      required: [true, 'Apellido es un campo requerido'],
     },
     clientEmail: {
       type: String,
