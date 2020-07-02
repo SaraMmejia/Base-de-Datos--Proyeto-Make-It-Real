@@ -39,9 +39,11 @@ const providerSchema = new Schema(
       type: String,
       required: [true, 'Contraseña es un campo requerido'],
     },
-  }, {
-  timestamps: true,
-});
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const Provider = model('Provider', providerSchema); //Modelo
 

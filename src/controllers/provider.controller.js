@@ -1,6 +1,7 @@
 const Provider = require('../models/provider.model.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { transporter, welcome, verify } = require('../utils/mail')
 
 module.exports = {
   async all(req, res) {
@@ -8,7 +9,7 @@ module.exports = {
       const provider = await Provider.find();
       res.status(200).json(provider);
     } catch (error) {
-      console.log(error);
+      res.status(500).json({ message: error.message });
     }
   },
   async create(req, res) {
@@ -23,12 +24,24 @@ module.exports = {
         nit: data.nit,
         password,
       });
+
       const token = jwt.sign({ id: provider._id }, process.env.SECRET, {
         expiresIn: 60 * 60 * 24 * 365,
       });
+
+      const mail = {
+        from: '"Cheaper Team" <cheapercolombia@aol.com>',
+        to: provider.providerEmail,
+        subject: 'Bienvenido!',
+        html: welcome(provider.name),
+      }
+      await transporter.sendMail(mail, (err) => {
+        console.log(err);
+      })
+
       res.status(200).json({ token });
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
   async show(req, res) {
@@ -37,7 +50,7 @@ module.exports = {
       const provider = await Provider.findById(id);
       res.status(200).json(provider);
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
   async edit(req, res) {
@@ -51,7 +64,7 @@ module.exports = {
       const provider = await Provider.findByIdAndUpdate(id, data, options);
       res.status(200).json(provider);
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
   async destroy(req, res) {
@@ -60,7 +73,7 @@ module.exports = {
       const provider = await Provider.findByIdAndDelete(id);
       res.status(200).json(provider);
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
 };

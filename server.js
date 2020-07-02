@@ -10,8 +10,10 @@ const loginRouter = require('./src/routes/login.js');
 const productRouter = require('./src/routes/product.js');
 const searchRouter = require('./src/routes/search.js');
 
+const app = require('./src/app');
+const port = process.env.PORT || 8080;
 
-const port = process.env.PORT;
+
 
 initDatabase();
 const app = express();
@@ -27,4 +29,4 @@ app.use('/providers', providerRouter);
 app.use('/products', productRouter);
 app.use('/providers/:id/branch', branchRouter);
 
-app.listen(port, () => console.log(`App running on http://localhost:${port}`));
+app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));
