@@ -19,10 +19,6 @@ app.use(cors());
 app.use(express.json());
 
 
-
-
-
-
 app.use('/', loginRouter);
 app.use('/clients', clientRouter);
 app.use('/clients/search', searchRouter);
