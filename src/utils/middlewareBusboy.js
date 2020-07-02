@@ -10,7 +10,7 @@ cloudinary.config({
 
 module.exports = {
   formData(req, res, next) {
-    console.log('Entro al form data');
+    console.log('Entro al form data.');
     const busboy = new Busboy({ headers: req.headers });
     req.body = {}; //Agregamos todos los campos que nos llegan a reg.Body
 
