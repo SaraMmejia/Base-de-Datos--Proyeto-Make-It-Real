@@ -10,7 +10,6 @@ const loginRouter = require('./src/routes/login.js');
 const productRouter = require('./src/routes/product.js');
 const searchRouter = require('./src/routes/search.js');
 
-const app = require('./src/app');
 const port = process.env.PORT || 8080;
 
 
