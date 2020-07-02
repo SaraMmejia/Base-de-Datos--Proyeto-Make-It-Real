@@ -11,6 +11,7 @@ module.exports = {
   },
   async create(req, res) {
     try {
+      console.log('Entre al create');
       const { file, ...data } = req.body;
       console.log(req.body);
       const product = await Product.create({
