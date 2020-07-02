@@ -6,7 +6,7 @@ module.exports = {
       const branch = await Branch.find();
       res.status(200).json(branch);
     } catch (error) {
-      console.log(error);
+      res.status(500).json({ message: error.message });
     }
   },
   async create(req, res) {
@@ -15,7 +15,7 @@ module.exports = {
       const branch = await Branch.create(data);
       res.status(200).json(branch);
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
   async show(req, res) {
@@ -24,7 +24,7 @@ module.exports = {
       const branch = await Branch.findById(id);
       res.status(200).json(branch);
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
   async edit(req, res) {
@@ -38,7 +38,7 @@ module.exports = {
       const branch = await Branch.findByIdAndUpdate(id, data, options);
       res.status(200).json(branch);
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
   async destroy(req, res) {
@@ -47,7 +47,7 @@ module.exports = {
       const branch = await Branch.findByIdAndDelete(id);
       res.status(200).json(branch);
     } catch (error) {
-      console.log(error);
+      res.status(400).json({ message: error.message });
     }
   },
 };
