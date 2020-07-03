@@ -34,12 +34,15 @@ module.exports = {
   async edit(req, res) {
     try {
       const { id } = req.params;
-      const data = req.body;
+      const { file, ...data } = req.body;
       const options = {
         new: true,
         useFindAndModify: false,
       };
-      const product = await Product.findByIdAndUpdate(id, data, options);
+      const product = await Product.findByIdAndUpdate(
+        id, 
+        data,
+        options);
       res.status(200).json(product);
     } catch (error) {
       res.status(400).json({ message: error.message });

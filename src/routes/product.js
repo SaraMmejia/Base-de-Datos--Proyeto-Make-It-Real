@@ -9,4 +9,5 @@ router.route('/show/:id').get(productController.show);
 router.route('/edit/:id').put(productController.edit);
 router.route('/destroy/:id').delete(productController.destroy);
 
+
 module.exports = router;

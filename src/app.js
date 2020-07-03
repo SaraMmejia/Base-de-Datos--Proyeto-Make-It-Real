@@ -8,6 +8,7 @@ const loginRouter = require('./routes/login.js');
 const productRouter = require('./routes/product.js');
 const { auth } = require('./utils/middlewares.js');
 const { formData } = require('./utils/middlewareBusboy.js');
+const searchRouter = require('./routes/search.js');
 
 const app = express();
 initDatabase();
@@ -18,6 +19,8 @@ app.use(express.static('public'));
 
 app.use('/', loginRouter);
 app.use('/clients', clientRouter);
+app.use('/clients/search', searchRouter);
+app.use('/providers/search', searchRouter);
 app.use('/providers', providerRouter);
 app.use('/products', productRouter);
 app.use('/providers/:id/branch', branchRouter);
