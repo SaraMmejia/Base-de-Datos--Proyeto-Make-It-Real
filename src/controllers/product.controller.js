@@ -39,10 +39,10 @@ module.exports = {
         new: true,
         useFindAndModify: false,
       };
-      const product = await Product.findByIdAndUpdate(
-        id, 
-        data,
-        options);
+      const product = await Product.findByIdAndUpdate(id, {
+        ...data,
+        picture: file.secure_url,
+        });
       res.status(200).json(product);
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -58,3 +58,4 @@ module.exports = {
     }
   },
 };
+/* picture: file.secure_url, */
