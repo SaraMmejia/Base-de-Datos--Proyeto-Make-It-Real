@@ -58,4 +58,3 @@ module.exports = {
     }
   },
 };
-/* picture: file.secure_url, */
