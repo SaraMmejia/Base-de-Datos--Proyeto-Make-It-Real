@@ -6,7 +6,7 @@ const { formData } = require('../utils/middlewareBusboy.js');
 router.route('/all').get(auth, productController.all);
 router.route('/create').post(formData, productController.create);
 router.route('/show/:id').get(productController.show);
-router.route('/edit/:id').put(productController.edit);
+router.route('/edit/:id').put(formData, productController.edit);
 router.route('/destroy/:id').delete(productController.destroy);
 
 
