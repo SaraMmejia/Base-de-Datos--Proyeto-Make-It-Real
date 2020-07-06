@@ -39,6 +39,9 @@ module.exports = {
         new: true,
         useFindAndModify: false,
       };
+ funtionCar
+      const product = await Product.findByIdAndUpdate(id, data, options);
+
       const product = await Product.findByIdAndUpdate(id, {
         ...data,
         picture: file.secure_url,
