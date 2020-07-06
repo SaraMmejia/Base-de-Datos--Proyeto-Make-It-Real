@@ -1,7 +1,6 @@
 const Busboy = require('busboy');
 const cloudinary = require('cloudinary').v2;
 
-//Configuracion para conectarse a nuestra cuenta
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -12,14 +11,12 @@ module.exports = {
   formData(req, res, next) {
     console.log('Entro al form data.');
     const busboy = new Busboy({ headers: req.headers });
-    req.body = {}; //Agregamos todos los campos que nos llegan a reg.Body
+    req.body = {};
 
-    //Trae el Campo y Nombre del campo "Iterador"
     busboy.on('field', (key, val) => {
       req.body[key] = val;
     });
 
-    //Los campos corresponden al data.append del app.js
     busboy.on('file', (fieldname, file, filename) => {
       const stream = cloudinary.uploader.upload_stream(
         { upload_preset: process.env.CLOUDINARY_PRESET },
@@ -33,7 +30,6 @@ module.exports = {
         }
       );
 
-      //Métodos
       file.on('data', (data) => {
         stream.write(data);
       });

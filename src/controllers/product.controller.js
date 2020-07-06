@@ -11,7 +11,6 @@ module.exports = {
   },
   async create(req, res) {
     try {
-      console.log('Entre al create');
       const { file, ...data } = req.body;
       console.log(req.body);
       const product = await Product.create({
@@ -40,10 +39,7 @@ module.exports = {
         new: true,
         useFindAndModify: false,
       };
-      const product = await Product.findByIdAndUpdate(
-        id, 
-        data,
-        options);
+      const product = await Product.findByIdAndUpdate(id, data, options);
       res.status(200).json(product);
     } catch (error) {
       res.status(400).json({ message: error.message });
